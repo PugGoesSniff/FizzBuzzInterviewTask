@@ -11,7 +11,7 @@ namespace FizzBuzzLib.Tests
         public void FizzBuzzifyAnInt_WhenPassedAMultipleOf15()
         {
             var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(30); //Test 15, should return FizzBuzz
+            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(30); //Test 30, should return FizzBuzz
             returnValue.Should().Be("FizzBuzz");
         }
 
@@ -20,7 +20,7 @@ namespace FizzBuzzLib.Tests
         public void FizzBuzzifyAnInt_WhenPassedAMultipleOf5()
         {
             var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(10); //Test 5, should return Buzz
+            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(10); //Test 10, should return Buzz
             returnValue.Should().Be("Buzz");
         }
 
@@ -29,7 +29,7 @@ namespace FizzBuzzLib.Tests
         public void FizzBuzzifyAnInt_WhenPassedAMultipleOf3()
         {
             var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(6); //Test 3, should return Fizz
+            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(6); //Test 6, should return Fizz
             returnValue.Should().Be("Fizz");
         }
 
