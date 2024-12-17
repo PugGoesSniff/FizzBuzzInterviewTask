@@ -8,7 +8,7 @@
         static void Main(string[] args)
         {
             var fizzBuzzer = new FizzBuzz();
-            string value = fizzBuzzer.DemoMethod();
+            string value = fizzBuzzer.FizzBuzzifyAnInt(4);
             Console.WriteLine(value);
             Console.ReadKey();
         }
