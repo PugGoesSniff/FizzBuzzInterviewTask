@@ -9,9 +9,9 @@
     {
         static void Main(string[] args)
         {
-            //Running FizzBuzzifyAnInt in console for manual testing
+            //Running FizzBuzzValuesForRange in console to print the "buzzed" values from 1 to 100
             var fizzBuzzer = new FizzBuzz();
-            IEnumerable<string> rangeStrings = fizzBuzzer.FizzBuzzValuesForRange(4, 6);
+            IEnumerable<string> rangeStrings = fizzBuzzer.FizzBuzzValuesForRange(1, 100);
             foreach (string i in rangeStrings)
             {
                 Console.WriteLine(i);
