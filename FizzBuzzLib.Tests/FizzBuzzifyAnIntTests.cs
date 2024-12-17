@@ -6,58 +6,20 @@ namespace FizzBuzzLib.Tests
 
     public class FizzBuzzifyAnIntTests
     {
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it recieves a multiple of 15
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedAMultipleOf15()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(30); //Test 30, should return FizzBuzz
-            returnValue.Should().Be("FizzBuzz");
-        }
 
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it recieves a multiple of 5
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedAMultipleOf5()
+        //A series of tests that will check if FizzBuzzifyAnInt returns what is expected
+        [Theory]
+        [InlineData(4, "4")] //an integer not a multiple of 3 or 5 should return itself parsed as a string
+        [InlineData(6, "Fizz")] //a multiple of 3 should return Fizz
+        [InlineData(10, "Buzz")] //a multiple of 5 should return Buzz
+        [InlineData(30, "FizzBuzz")] //a multiple of 15 should return FizzBuzz
+        [InlineData(-3, "Fizz")] //a negative multiple of 3 should return Fizz
+        [InlineData(-4, "-4")] //a negative non multiple to return itself parsed as a string
+        public void FizzBuzzifyAnInt_AllTests(int num, string expected)
         {
             var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(10); //Test 10, should return Buzz
-            returnValue.Should().Be("Buzz");
-        }
-
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it recieves a multiple of 3
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedAMultipleOf3()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(6); //Test 6, should return Fizz
-            returnValue.Should().Be("Fizz");
-        }
-
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it does not recieve a multiple of 3 or 5
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedNoMultiple()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(4); //Test 4, should return 4 as a String
-            returnValue.Should().Be("4");
-        }
-
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it recieves a negative number
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedNegative()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(-4); //Test -4, should return -4 as a String
-            returnValue.Should().Be("-4");
-        }
-
-        //Testing FizzBuzzifyAnInt to see if the function returns what is expected when it recieves a negative multiple
-        [Fact]
-        public void FizzBuzzifyAnInt_WhenPassedNegativeMultiple()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(-3); //Test -3, should return Fizz as a String
-            returnValue.Should().Be("Fizz");
+            string returnValue = fizzBuzzer.FizzBuzzifyAnInt(num);
+            returnValue.Should().Be(expected);
         }
     }
 }

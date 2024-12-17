@@ -8,82 +8,31 @@ namespace FizzBuzzLib.Tests
 
     public class FizzBuzzValuesForRangeTests
     {
-        //Testing FizzBuzzValuesForRange to see if the function returns what is expected when it recieves positive ranges
-        [Fact]
-        public void FizzBuzzValuesForRange_WhenPassedPositiveRange()
+
+        //Declaring all the data that I want to test
+        public static IEnumerable<object[]> testData => new List<object[]>
+        {
+            new object[] { 4, 6,  new List<string> { "4", "Buzz", "Fizz" }},
+            new object[] { -18, -15, new List<string> {"Fizz", "-17", "-16", "FizzBuzz" } },
+            new object[] {-15, -18, new List<string> { } }
+        };
+
+        //Testing FizzBuzzValuesForRange_AllTests with the test cases defined in testData
+        [Theory]
+        [MemberData(nameof(testData))]
+        public void FizzBuzzValuesForRange_AllTests(int start, int end, List<string> expectedStrings)
         {
             var fizzBuzzer = new FizzBuzz();
-            IEnumerable<string> returnValue = fizzBuzzer.FizzBuzzValuesForRange(4, 6); //Test 4,6 should return {"4","Buzz","Fizz"}
-            List<string> expectedValue = new List<string> { "4", "Buzz", "Fizz" };
+            IEnumerable<string> returnValue = fizzBuzzer.FizzBuzzValuesForRange(start, end);
             //Make sure both lists have equal lengths
-            if (returnValue.Count() == expectedValue.Count)
+            Assert.Equal(returnValue.Count(), expectedStrings.Count());
+            //Check each to make sure each index match
+            var index = 0;
+            foreach (string i in returnValue)
             {
-                var index = 0;
-                //Check each to make sure each index match
-                foreach (string i in returnValue)
-                {
-                    i.Should().Be(expectedValue[index]);
-                    index++;
-                }
-            }
-            //If they don't return fail
-            else
-            {
-                0.Should().Be(1);
+                i.Should().Be(expectedStrings[index]);
+                index++;
             }
         }
-
-
-        //Testing FizzBuzzValuesForRange to see if the function returns what is expected when it recieves negative ranges
-        [Fact]
-        public void FizzBuzzValuesForRange_WhenPassedNegativeRange()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            IEnumerable<string> returnValue = fizzBuzzer.FizzBuzzValuesForRange(-18, -15); //Test -18,-15, should return {"Fizz",-17,-16,"FizzBuzz"}
-            List<string> expectedValue = new List<string> { "Fizz", "-17", "-16", "FizzBuzz" };
-            //Make sure both lists have equal lengths
-            if (returnValue.Count() == expectedValue.Count)
-            {
-                var index = 0;
-                //Check each to make sure each index match
-                foreach (string i in returnValue)
-                {
-                    i.Should().Be(expectedValue[index]);
-                    index++;
-                }
-            }
-            //If they don't return fail
-            else
-            {
-                0.Should().Be(1);
-            }
-        }
-
-
-        //Testing FizzBuzzValuesForRange to see if the function returns what is expected when it recieves inverted ranges
-        [Fact]
-        public void FizzBuzzValuesForRange_WhenPassedInvertedRange()
-        {
-            var fizzBuzzer = new FizzBuzz();
-            IEnumerable<string> returnValue = fizzBuzzer.FizzBuzzValuesForRange(-15, -18); //Test -15,18, should return {}
-            List<string> expectedValue = new List<string> { };
-            //Make sure both lists have equal lengths
-            if (returnValue.Count() == expectedValue.Count)
-            {
-                var index = 0;
-                //Check each to make sure each index match
-                foreach (string i in returnValue)
-                {
-                    i.Should().Be(expectedValue[index]);
-                    index++;
-                }
-            }
-            //If they don't return fail
-            else
-            {
-                0.Should().Be(1);
-            }
-        }
-
     }
 }
